@@ -1,0 +1,31 @@
+#!/bin/bash
+
+clear
+echo
+neofetch
+
+update=1
+echo -n " Welcome back ${USER}, would you like to update the system?[Y/n]"
+while [ $update = 1 ]; do
+
+read update
+if [[ $update == "y" || $update == "Y" ]]
+then
+#	update
+	sudo pacman -Syu
+	echo "Update completed, exiting..."
+	sleep 2
+	exit
+else
+	if [[ $update == "n" || $update == "N" ]]
+	then
+		echo "Update bypassed, exiting..."
+		sleep 2
+		exit
+	else
+		echo -n "Command not recognized, update all systems?[Y/n]"
+		update=1
+	fi
+
+fi
+done
